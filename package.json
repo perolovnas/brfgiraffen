@@ -1,0 +1,16 @@
+{
+    "name": "oas",
+    "version": "1.0.0",
+    "description": "OAS Web development",
+    "main": "index.js",
+    "scripts": {
+        "sync": "browser-sync start -p 'brfgiraffen.local' --files '**/*.php' 'assets/js/*.js' '**/*.css' 'acf-blocks'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "browser-sync": "^2.27.9"
+    }
+}

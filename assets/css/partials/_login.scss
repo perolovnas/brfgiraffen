@@ -1,0 +1,47 @@
+.wp-block-loginout {
+
+    * {
+        font-family: var(--wp--preset--font-family--karla);
+    }
+
+    form {
+
+        p.login-username {
+            display: flex;
+            flex-wrap: wrap;
+
+            label {
+                width: 100%;
+            }
+
+            input {
+                @include input-field;
+            }
+        }
+
+        p.login-password {
+            display: flex;
+            flex-wrap: wrap;
+
+            label {
+                width: 100%;
+            }
+
+            input {
+                @include input-field;
+            }
+        }
+
+        p.login-remember {
+            display: none;
+        }
+
+        p.login-submit {
+
+            input {
+                @include button-primary;
+            }
+        }
+    }
+
+}
