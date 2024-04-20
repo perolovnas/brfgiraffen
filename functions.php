@@ -35,18 +35,35 @@ function logged_in_menu() { register_nav_menu('logged_in_menu',__( 'Logged in me
 
 /*============================================================================== */
 # Redirect login
-function redirect_user( $redirect_to, $request, $user ){
-    //is there a user to check?
-    if ( isset( $user->roles ) ) {
-        $redirect_to = '/mina-sidor';
-    }
-    return $redirect_to;
-}
+// function redirect_user( $redirect_to, $request, $user ){
+//     //is there a user to check?
+//     if ( isset( $user->roles ) ) {
+//         $redirect_to = '/mina-sidor';
+//     }
+//     return $redirect_to;
+// }
 
-add_filter( 'login_redirect', 'redirect_user', 10, 3 );
-add_filter( 'logout_redirect', function() {
-    return esc_url( home_url() );
-} ); 
+// add_filter( 'login_redirect', 'redirect_user', 10, 3 );
+// add_filter( 'logout_redirect', function() {
+//     return esc_url( home_url() );
+// } ); 
+
+
+/**
+ * WordPress function for redirecting users on login based on user role
+ */
+function wpdocs_my_login_redirect( $url, $request, $user ) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) ) {
+        if ( $user->has_cap( 'administrator' ) ) {
+            $url = '/wp-admin';
+        } else {
+            $url = home_url( '/mina-sidor/' );
+        }
+    }
+    return $url;
+}
+ 
+add_filter( 'login_redirect', 'wpdocs_my_login_redirect', 10, 3 );
 
 /*============================================================================== */
 // Display synced patterns(reusable blocks)
