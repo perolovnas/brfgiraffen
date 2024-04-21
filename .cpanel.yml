@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/example/public_html/wp-content/themes/brfgiraffen
+    - export DEPLOYPATH=/home/example/public_html/wp-content/themes/brfgiraffen/
